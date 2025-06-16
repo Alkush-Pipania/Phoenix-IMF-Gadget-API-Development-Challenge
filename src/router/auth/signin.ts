@@ -1,6 +1,6 @@
 import { RequestHandler, Router } from "express";
 import { signinSchema, signupSchema } from "../../types";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import prisma from "../../lib/prisma";
 import jwt from "jsonwebtoken";
 
