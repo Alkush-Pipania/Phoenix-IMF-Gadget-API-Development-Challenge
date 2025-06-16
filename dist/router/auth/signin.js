@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const types_1 = require("../../types");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const prisma_1 = __importDefault(require("../../lib/prisma"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const router = (0, express_1.Router)();
@@ -34,7 +34,7 @@ const SignupHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             res.status(400).json({ error: 'User not found' });
             return;
         }
-        const isPasswordValid = yield bcrypt_1.default.compare(input.data.password, user.password);
+        const isPasswordValid = yield bcryptjs_1.default.compare(input.data.password, user.password);
         if (!isPasswordValid) {
             res.status(400).json({ error: 'Invalid password' });
             return;

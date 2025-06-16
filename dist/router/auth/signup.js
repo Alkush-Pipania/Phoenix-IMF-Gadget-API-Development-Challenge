@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const types_1 = require("../../types");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const prisma_1 = __importDefault(require("../../lib/prisma"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const router = (0, express_1.Router)();
@@ -25,7 +25,7 @@ const SignupHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         return;
     }
     try {
-        const hashedPassword = yield bcrypt_1.default.hash(input.data.password, 10);
+        const hashedPassword = yield bcryptjs_1.default.hash(input.data.password, 10);
         const user = yield prisma_1.default.user.create({
             data: {
                 fullname: input.data.fullname,
