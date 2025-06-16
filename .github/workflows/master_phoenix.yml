@@ -19,8 +19,9 @@ jobs:
           node-version: '22'
       - name: npm install, build, and test
         run: |
-          npm install
-          npm run build
+          npm install --production=false
+          npm rebuild bcrypt --build-from-source
+          npx tsc
           npm run test --if-present || echo "Tests skipped"
           dir
           echo "Contents after build:"
