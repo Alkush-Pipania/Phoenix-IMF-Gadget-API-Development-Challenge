@@ -14,10 +14,11 @@ app.use(express.json());
 
 app.use('/', signup);
 app.use('/', signin);
+app.use('/', randomApiRouter);
 
 app.use(authenticateToken as RequestHandler);
 
-app.use('/', randomApiRouter);
+
 app.use('/gadgets', gadgetInventory);
 app.use('/', selfdestructSequence);
 
