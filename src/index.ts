@@ -4,6 +4,7 @@ import { default as selfdestructSequence } from './router/SelfdestructSequence';
 import { default as signup } from './router/auth/signup';
 import { default as signin } from './router/auth/signin';
 import { authenticateToken } from './middleware/auth';
+import randomApiRouter from './router/RandomApiforUpTimeRobot';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use('/', signin);
 
 app.use(authenticateToken as RequestHandler);
 
+app.use('/', randomApiRouter);
 app.use('/gadgets', gadgetInventory);
 app.use('/', selfdestructSequence);
 
